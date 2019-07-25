@@ -30,9 +30,9 @@ public class ReservaController {
         return ResponseEntity.ok(reservaRepository.save(reserva));
     }
 
-    @PutMapping(value="/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public HttpEntity<Reserva> updateEquipamento(@PathVariable("id") Long id,@Valid @RequestBody Reserva reserva) {
-        Optional<Reserva> dbReserva = reservaRepository.findById(id);
+    @PutMapping(value="/updateReserva", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public HttpEntity<Reserva> updateReserva(@Valid @RequestBody Reserva reserva) {
+        Optional<Reserva> dbReserva = reservaRepository.findById(reserva.getId());
         if(dbReserva.isPresent()) {
             dbReserva.get().setVeiculo(reserva.getVeiculo());
             dbReserva.get().setDataCancelamento(reserva.getDataCancelamento());

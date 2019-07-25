@@ -15,11 +15,6 @@ import br.com.targettrust.traccadastros.entidades.Reserva;
 public interface ReservaRepository 
 	extends JpaRepository<Reserva, Long>{
 
-	@Query("delete Reserva reserva "+
-			"         from Reserva "+
-			"         where reserva.id = :id ")
-	@Transactional
-	void deleteById(@Param("id") Long id);
 
 	@Query("  from Reserva reserva "+ 
 	       " where reserva.veiculo.placa = :placa "
