@@ -74,7 +74,7 @@ public class ModeloController {
 		modeloRepository.deleteById(id);
 	}
 	
-	@PutMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public HttpEntity<Modelo> createModelo(@Valid @RequestBody Modelo modelo) {
 		if(modelo == null) {
 			return ResponseEntity.badRequest().build();
@@ -82,7 +82,7 @@ public class ModeloController {
 		return ResponseEntity.ok(modeloRepository.save(modelo));		
 	}
 	
-	@PostMapping(value="/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	@PutMapping(value="/{id}", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public HttpEntity<Modelo> updateModelo(@PathVariable("id") Long id, 
 			@Valid @RequestBody Modelo modelo) {
 		Optional<Modelo> dbModelo = modeloRepository.findById(id);

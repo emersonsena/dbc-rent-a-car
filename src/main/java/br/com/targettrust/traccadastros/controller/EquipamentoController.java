@@ -50,7 +50,7 @@ public class EquipamentoController {
 	public HttpEntity<List<Equipamento>> search(
 			@RequestParam(name="id", required=false) Long id, 
 			@RequestParam(name="descricao", required=false) String descricao) {
-			descricao = descricao != null ? descricao.toUpperCase() : descricao;
+			descricao = descricao != null ? descricao : "";
 		return ResponseEntity.ok(
 				equipamentoRepository.search(id, descricao)
 				);
@@ -58,7 +58,8 @@ public class EquipamentoController {
 	
 	@GetMapping("/desc/{descricao}")
 	public HttpEntity<Equipamento> findByDescricao(@PathVariable("descricao") String descricao){
-		Optional<Equipamento> equipamento = equipamentoRepository.findByDescricao(descricao.toUpperCase());
+		Optional<Equipamento> equipamento = equipamentoRepository.findByDescricao(descricao);
+
 		if(equipamento.isPresent()) {
 			return ResponseEntity.ok(equipamento.get());
 		}
@@ -79,9 +80,11 @@ public class EquipamentoController {
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public HttpEntity<Equipamento> createEquipamento(@Valid @RequestBody Equipamento equipamento){
-		if(equipamento == null || equipamento.getId() != null) {
+
+	/*	if(equipamento == null || equipamento.getId() != null) {
 			return ResponseEntity.badRequest().build();
-		}
+		}*/
+
 		return ResponseEntity.ok(equipamentoRepository.save(equipamento));	
 	}
 	
