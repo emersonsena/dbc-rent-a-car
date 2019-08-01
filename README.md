@@ -22,7 +22,8 @@ Os seguintes itens estarão sendo avaliados:
  2.1. Código legível e bem escrito  
  2.2. Sequencia de implementação  
  2.3. Commits - prefira commits menores e com comentários relevantes  
- 2.4. Testes unitários - Toda a camada de persistência já foi implementada com spring-data-jpa, porém não temos serviço (regra de negócios) e os endpoints solicitados. Utilizar TDD e refletir isso em seus commits será um enorme diferencial.  
+ 2.4. Testes unitários - Toda a camada de persistência já foi implementada com spring-data-jpa, porém não temos serviço (regra de negócios) e os endpoints solicitados.
+ Utilizar TDD e refletir isso em seus commits será um enorme diferencial.
 
 
 ## Configuração do ambiente
