@@ -2,6 +2,7 @@ package br.com.targettrust.traccadastros.repositorio;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -33,7 +34,7 @@ public interface LocacaoRepository
 	       + " and ( :dataInicial between locacao.dataInicial and locacao.dataFinal "
 	       + "       OR"
 	       + "       :dataFinal between locacao.dataInicial and locacao.dataFinal )")
-	List<Locacao> findByIdVeiculo(
+	Optional<Locacao> findByIdVeiculo(
 			@Param("id") Long id, 
 			@Param("dataInicial") LocalDate dataInicial,
 			@Param("dataFinal") LocalDate dataFinal);
